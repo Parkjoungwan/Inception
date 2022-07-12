@@ -1,0 +1,49 @@
+version: '3'
+
+volumes:
+    data: {}
+services:
+    mariadb:
+        image: debian:buster
+        build: ./containers/mariadb 
+        restart: always
+        expose:
+            - "3306"
+        networks:
+          intra:
+            ipv4_address: 172.25.0.10
+        tty: true
+        command: sh run_db.sh
+    nginx:
+        image: debian:buster
+        build: ./containers/nginx 
+        restart: always
+        ports:
+            - "443:443"
+        volumes:
+            - data:/var/www/html
+        networks:
+          intra:
+            ipv4_address: 172.25.0.30
+        tty: true
+        command: sh run_ng.sh
+    wordpress:
+        image: debian:buster
+        build: ./containers/wordpress 
+        restart: always
+        volumes:
+            - data:/var/www/html
+        expose: 
+            - "9000"
+        networks:
+          intra:
+            ipv4_address: 172.25.0.20
+        tty: true
+        command: sh run_wp.sh
+networks:
+    intra:
+        driver: bridge
+        ipam:
+          driver: default
+          config:
+            - subnet: "172.25.0.0/24"

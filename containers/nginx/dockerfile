@@ -1,0 +1,9 @@
+FROM debian:buster
+
+RUN apt-get update -y && apt-get upgrade -y && \
+apt-get -y install nginx \
+openssl \
+vim
+
+COPY ./conf/run_ng.sh ./
+COPY ./conf/default ./tmp
