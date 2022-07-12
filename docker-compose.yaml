@@ -4,7 +4,7 @@ volumes:
     data: {}
 services:
     mariadb:
-        image: debian:buster
+        image: mariadb
         build: ./containers/mariadb 
         restart: always
         expose:
@@ -15,7 +15,7 @@ services:
         tty: true
         command: sh run_db.sh
     nginx:
-        image: debian:buster
+        image: nginx
         build: ./containers/nginx 
         restart: always
         ports:
@@ -28,7 +28,7 @@ services:
         tty: true
         command: sh run_ng.sh
     wordpress:
-        image: debian:buster
+        image: wordpress
         build: ./containers/wordpress 
         restart: always
         volumes:
