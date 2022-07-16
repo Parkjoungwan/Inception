@@ -8,7 +8,7 @@ BLUE		:= $(shell tput -Txterm setaf 6)
 WHITE		:= $(shell tput -Txterm setaf 7)
 RESET		:= $(shell tput -Txterm sgr0)
 
-compose = ./docker-compose.yaml
+compose = srcs/docker-compose.yaml
 
 all: up
 
@@ -20,3 +20,5 @@ down:
 	@echo "$(RED)Cleaning containers ... $(RESET)"
 	@docker-compose -f $(compose) down --v --rmi all
 	@echo "$(RED)DONE!$(RESET)"
+
+re: down up

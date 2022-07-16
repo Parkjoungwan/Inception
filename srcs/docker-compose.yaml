@@ -1,14 +1,14 @@
 version: '3'
 
-volumes:
-    data: {}
 services:
     mariadb:
         image: mariadb
-        build: ./containers/mariadb 
+        build: ./mariadb 
         restart: always
         expose:
             - "3306"
+        volumes:
+          - db_data:/var/lib/mysql
         networks:
           intra:
             ipv4_address: 172.25.0.10
@@ -16,12 +16,12 @@ services:
         command: sh run_db.sh
     nginx:
         image: nginx
-        build: ./containers/nginx 
+        build: ./nginx 
         restart: always
         ports:
             - "443:443"
         volumes:
-            - data:/var/www/html
+          - wp_data:/var/www/html
         networks:
           intra:
             ipv4_address: 172.25.0.30
@@ -29,10 +29,10 @@ services:
         command: sh run_ng.sh
     wordpress:
         image: wordpress
-        build: ./containers/wordpress 
+        build: ./wordpress 
         restart: always
         volumes:
-            - data:/var/www/html
+            - wp_data:/var/www/html
         expose: 
             - "9000"
         networks:
@@ -47,3 +47,16 @@ networks:
           driver: default
           config:
             - subnet: "172.25.0.0/24"
+volumes:
+  db_data: 
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/parkjoungwan/DirForClone/data
+      o: bind
+  wp_data: 
+    driver: local
+    driver_opts:
+      type: none
+      device: /Users/parkjoungwan/DirForClone/data
+      o: bind
