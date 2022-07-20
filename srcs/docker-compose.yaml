@@ -2,20 +2,20 @@ version: '3'
 
 services:
     mariadb:
-        image: mariadb
+        image: mariadb:1
         build: ./mariadb 
         restart: always
+        volumes:
+          - db_data:/tmp
         expose:
             - "3306"
-        volumes:
-          - db_data:/var/lib/mysql
         networks:
           intra:
             ipv4_address: 172.25.0.10
         tty: true
         command: sh run_db.sh
     nginx:
-        image: nginx
+        image: nginx:1
         build: ./nginx 
         restart: always
         ports:
@@ -28,7 +28,7 @@ services:
         tty: true
         command: sh run_ng.sh
     wordpress:
-        image: wordpress
+        image: wordpress:1
         build: ./wordpress 
         restart: always
         volumes:
@@ -48,7 +48,7 @@ networks:
           config:
             - subnet: "172.25.0.0/24"
 volumes:
-  db_data: 
+  db_data:
     driver: local
     driver_opts:
       type: none

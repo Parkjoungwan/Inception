@@ -12,13 +12,15 @@ compose = srcs/docker-compose.yaml
 
 all: up
 
-up: 
+up:
 	@echo "$(GREEN)Buiilding containers ...$(RESET)"
+	@mkdir /Users/parkjoungwan/DirForClone/data
 	@docker-compose -f $(compose) up --build -d
 
 down:
 	@echo "$(RED)Cleaning containers ... $(RESET)"
 	@docker-compose -f $(compose) down --v --rmi all
+	@rm -rf /Users/parkjoungwan/DirForClone/data
 	@echo "$(RED)DONE!$(RESET)"
 
 re: down up

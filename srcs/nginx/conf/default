@@ -18,6 +18,7 @@
 
 # Default server configuration
 #
+#
 server {
 	listen 443 ssl;
 	ssl_protocols  TLSv1.2 TLSv1.3;
@@ -29,7 +30,7 @@ server {
 
 	index index.php index.html index.htm;
 
-	server_name localhost joupark.42.fr;
+	server_name localhost;
 
 	location / {
 		try_files $uri $uri/ =404;
@@ -49,17 +50,14 @@ server {
 #
 # You can move that to a different file under sites-available/ and symlink that
 # to sites-enabled/ to enable it.
-#
-#server {
-#	listen 80;
-#	listen [::]:80;
-#
-#	server_name example.com;
-#
-#	root /var/www/example.com;
-#	index index.html;
-#
-#	location / {
-#		try_files $uri $uri/ =404;
-#	}
-#}
+
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+
+	server_name joupark.42.fr www.joupark.42.fr;
+
+	location / {
+		return 301 https://127.0.0.1$request_uri;
+	}
+}

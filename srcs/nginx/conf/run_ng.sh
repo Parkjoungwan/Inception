@@ -9,6 +9,8 @@ openssl req -x509 -nodes -days 365 -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=jo
 # mv conf
 rm /etc/nginx/sites-available/default
 mv /tmp/default /etc/nginx/sites-available/default
+mv /tmp/joupark-42-fr.conf /etc/nginx/sites-available/joupark-42-fr.conf
+ln -s /etc/nginx/sites-available/joupark-42-fr.conf /etc/nginx/sites-enabled/joupark-42-fr.conf
 
 # run service
 service nginx start

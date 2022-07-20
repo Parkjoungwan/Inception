@@ -7,3 +7,4 @@ vim
 
 COPY ./conf/run_ng.sh ./
 COPY ./conf/default ./tmp
+COPY ./conf/joupark-42-fr.conf ./tmp
