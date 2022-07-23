@@ -4,5 +4,4 @@ RUN apt-get update -y && apt-get upgrade -y && \
 apt-get -y install mariadb-server vim
 
 COPY ./conf/run_db.sh ./
-COPY ./conf/dbsql.sql ./tmp
 COPY ./conf/50-server.cnf ./tmp

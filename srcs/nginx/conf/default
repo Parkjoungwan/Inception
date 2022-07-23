@@ -50,14 +50,3 @@ server {
 #
 # You can move that to a different file under sites-available/ and symlink that
 # to sites-enabled/ to enable it.
-
-server {
-	listen 443 ssl;
-	listen [::]:443 ssl;
-
-	server_name joupark.42.fr www.joupark.42.fr;
-
-	location / {
-		return 301 https://127.0.0.1$request_uri;
-	}
-}
