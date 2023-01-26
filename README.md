@@ -6,4 +6,5 @@
  
  ## 구성도
 
-![스크린샷 2022-06-27 오후 3.19.20.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b9d2619-dcfd-4b87-864a-1a98e4b417d2/스크린샷_2022-06-27_오후_3.19.20.png)
+<img width="434" alt="스크린샷 2022-06-27 오후 3 19 20" src="https://user-images.githubusercontent.com/48785968/214744565-3755bf1a-1208-46eb-8d6f-7e41f704d02b.png">
+
