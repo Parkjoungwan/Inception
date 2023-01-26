@@ -8,3 +8,16 @@
 
 <img width="434" alt="스크린샷 2022-06-27 오후 3 19 20" src="https://user-images.githubusercontent.com/48785968/214744565-3755bf1a-1208-46eb-8d6f-7e41f704d02b.png">
 
+# 실행 방법
+
+---
+
+docker-compose와 docker가 설치되어있어야 합니다.
+
+makefile을 통해 docker-compose로 빌드해주세요.
+
+```jsx
+make all
+```
+
+빌드가 완료되면, localhost:3000을 통해 웹 사이트에 접근할 수 있습니다.
